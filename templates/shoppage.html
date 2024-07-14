@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+        <title>Shop</title>
+        <!-- google fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+
+
+        <!-- font Awesome -->
+        <script src="https://kit.fontawesome.com/b7fd829945.js" crossorigin="anonymous"></script>
+
+
+        <!--bootstrap stylesheet-->
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        
+        <!--my stylesheet-->
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+  <!-- navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark nav-bar">
+    <div class="container-fluid">
+      <video class="logo" width="25%" autoplay muted>
+        <source src="{% static 'Logo-video.mp4' %}" type="video/mp4">
+      </video>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item home">
+            <a class="nav-link " aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item blog">
+            <a class="nav-link " href="/blogs">Blogs</a>
+          </li>
+          <li class="nav-item shop">
+            <a class="nav-link active" href="/shop">Shop</a>
+          </li>
+          <li class="nav-item project">
+            <a class="nav-link" href="/learn">SBS</a>
+          </li>
+          <li class="nav-item gallery">
+            <a class="nav-link " href="/gallery">Gallery</a>
+          </li>
+          <li class="nav-item Contact">
+            <a class="nav-link" href="HomePage.html #ContactMe">Contact</a>
+          </li>
+          <li class="nav-item insta">
+            <a class="nav-link" href="https://www.instagram.com/mr.singh_23/">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+          <li class="nav-item youtube">
+            <a class="nav-link" href="https://www.youtube.com/channel/UC20IYjJgesMSqm8q2ct8dXg">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+        </ul>
+        <!-- <form class="d-flex">
+               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+               <button class="btn btn-outline-success" type="submit">Search</button>
+             </form> -->
+      </div>
+    </div>
+  </nav>
+  
+    <div>
+      <center><h1 class="shop-heading">Shop</h1></center>
+      
+    </div>
+
+    <div class="shop-body">
+      <div class="row">
+       <div class="col-lg-6" >
+       </div>
+       <div class="col-lg-6" >
+        <nav class=" navbar-expand-lg navbar-dark ">
+        <ul class="navbar-nav mb-2 mb-lg-0 justify-content-end shop-cart">
+          <li class="nav-item cart-button col-lg-2">
+            <button type="button" id = "popcart"class="btn btn-secondary mx-2" data-container="body" data-toggle="popover" data-placement="bottom" data-html= "true" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+            Cart (<span id="cart">0</span>)
+            </button>
+          </li>
+          <li class="nav-item col-lg-2">
+           <a href="/orders"><p><button type="button" class="btn btn-secondary mx-2"> Checkout </button></p></a>
+          </li>
+          <li class="nav-item col-lg-4">
+           <a href="/tracker"><p><button type="button" class="btn btn-secondary mx-2"> Track Your Order </button></p></a>
+          </li>
+        </ul> 
+      </nav>
+      </div>
+      </div>
+    <h2 class="shop-category">Paintings</h2>
+
+    <div class="row">
+
+      <div class="shop-card col-lg-3">
+        <div class="card ">
+          <img src='/media/{{product.0.image}}' class="card-img-top" alt="reclusive fish painting">
+          <div class="card-body">
+            <h5 class="card-title" id="namepr{{product.0.id}}">{{product.0.product_name}}</h5>
+            <p class="card-text">{{product.0.desc}}</p>
+            <p class="card-text product-price">₹ <span id="pricepr{{product.0.id}}">{{product.0.price}} </span></p>
+            <span id="divpr{{0.id}}">
+              <a id="pr{{product.0.id}}" class="btn btn-primary cart">Add to Cart</a>
+            </span>
+            <a href="/reclusivefish"><button class="btn btn-primary cart">View</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-card col-lg-3">
+        <div class="card ">
+          <img src='/media/{{product.1.image}}' class="card-img-top" alt="Abstract painting">
+          <div class="card-body">
+            <h5 class="card-title" id="namepr{{product.1.id}}">{{product.1.product_name}}</h5>
+            <p class="card-text">{{product.1.desc}}</p>
+            <p class="card-text product-price" >₹ <span id="pricepr{{product.1.id}}">{{product.1.price}} </span></p>
+            <span id="divpr{{1.id}}">
+              <a id="pr{{product.1.id}}"  class="btn btn-primary cart">Add to Cart</a>
+            </span>
+            <a href="/abstractpainting"><button class="btn btn-primary cart">View</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-card col-lg-3">
+        <div class="card ">
+          <img src='/media/{{product.2.image}}' class="card-img-top" alt="shadow fight ninja painting">
+          <div class="card-body">
+            <h5 class="card-title" id="namepr{{product.2.id}}">{{product.2.product_name}}</h5>
+            <p class="card-text">{{product.2.desc}}</p>
+            <p class="card-text product-price" >₹ <span id="pricepr{{product.2.id}}">{{product.2.price}} </span></p>
+            <span id="divpr{{2.id}}">
+              <a id="pr{{product.2.id}}"  class="btn btn-primary cart">Add to Cart</a>
+            </span>
+            <a href="/sfnitem3"><button class="btn btn-primary cart">View</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-card col-lg-3">
+        <div class="card ">
+          <img src='/media/{{product.3.image}}' class="card-img-top" alt="Yellow dahlia flower painting">
+          <div class="card-body">
+            <h5 class="card-title" id="namepr{{product.3.id}}">{{product.3.product_name}}</h5>
+            <p class="card-text">{{product.3.desc}}</p>
+            <p class="card-text product-price" >₹ <span id="pricepr{{product.3.id}}">{{product.3.price}} </span></p>
+            <span id="divpr{{3.id}}">
+              <a id="pr{{product.3.id}}"  class="btn btn-primary cart">Add to Cart</a>
+            </span>
+            <a href="/floweritem4"><button class="btn btn-primary cart">View</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-card col-lg-3">
+        <div class="card ">
+          <img src='/media/{{product.4.image}}' class="card-img-top" alt="misty forest painting">
+          <div class="card-body">
+            <h5 class="card-title" id="namepr{{product.4.id}}">{{product.4.product_name}}</h5>
+            <p class="card-text">{{product.4.desc}}</p>
+            <p class="card-text product-price" >₹ <span id="pricepr{{product.4.id}}">{{product.4.price}} </span></p>
+            <span id="divpr{{4.id}}">
+              <a id="pr{{product.4.id}}"  class="btn btn-primary cart">Add to Cart</a>
+            </span>
+            <a href="/forestitem5"><button class="btn btn-primary cart">View</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-card col-lg-3">
+        <div class="card ">
+          <img src='/media/{{product.5.image}}' class="card-img-top" alt="eye painting">
+          <div class="card-body">
+            <h5 class="card-title" id="namepr{{product.5.id}}">{{product.5.product_name}}</h5>
+            <p class="card-text">{{product.5.desc}}</p>
+            <p class="card-text product-price" >₹ <span id="pricepr{{product.5.id}}">{{product.5.price}} </span></p>
+            <span id="divpr{{5.id}}">
+              <a id="pr{{product.5.id}}"  class="btn btn-primary cart">Add to Cart</a>
+            </span>
+            <a href="/eyeitem6"><button class="btn btn-primary cart">View</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-card col-lg-3">
+        <div class="card ">
+          <img src='/media/{{product.6.image}}' class="card-img-top" alt="forest walk painting">
+          <div class="card-body">
+            <h5 class="card-title" id="namepr{{product.6.id}}">{{product.6.product_name}}</h5>
+            <p class="card-text">{{product.6.desc}}</p>
+            <p class="card-text product-price" >₹ <span id="pricepr{{product.6.id}}">{{product.6.price}} </span></p>
+            <span id="divpr{{6.id}}">
+              <a id="pr{{product.6.id}}"  class="btn btn-primary cart">Add to Cart</a>
+            </span>
+            <a href="/walkitem7"><button class="btn btn-primary cart">View</button></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-card col-lg-3">
+        <div class="card ">
+          <img src='/media/{{product.7.image}}' class="card-img-top" alt="forest fox painting">
+          <div class="card-body">
+            <h5 class="card-title" id="namepr{{product.7.id}}">{{product.7.product_name}}</h5>
+            <p class="card-text">{{product.7.desc}}</p>
+            <p class="card-text product-price" >₹ <span id="pricepr{{product.7.id}}">{{product.7.price}} </span></p>
+            <span id="divpr{{7.id}}">
+              <a id="pr{{product.7.id}}"  class="btn btn-primary cart">Add to Cart</a>
+            </span>
+            <a href="/foxitem8"><button class="btn btn-primary cart">View</button></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <h2 class="shop-category">Hand-Painted T-Shirts</h2>
+
+
+        <div class="row">
+
+          <div class="shop-card col-lg-3">
+            <div class="card ">
+              <img src='/media/{{product.8.image}}' class="card-img-top" alt="Black T-shirt">
+              <div class="card-body">
+                <h5 class="card-title" id="namepr{{product.8.id}}">{{product.8.product_name}}</h5>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <h6 class="product-review">(4.7k reviews)</h6>
+                <p class="card-text">{{product.8.desc}}</p>
+                <p class="card-text product-price" >₹ <span id="pricepr{{product.8.id}}">{{product.8.price}} </span></p>
+                <span id="divpr{{8.id}}">
+                  <a id="pr{{product.8.id}}"  class="btn btn-primary cart">Add to Cart</a>
+                </span>
+                <a href="/tshirtitem9"><button class="btn btn-primary cart">View</button></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="shop-card col-lg-3">
+            <div class="card ">
+              <img src='/media/{{product.9.image}}' class="card-img-top" alt="Blohsh Black T-Shirt">
+              <div class="card-body">
+                <h5 class="card-title" id="namepr{{product.9.id}}">{{product.9.product_name}}</h5>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <h6 class="product-review">(3.2k reviews)</h6>
+                <p class="card-text">{{product.9.desc}}</p>
+                <p class="card-text product-price" >₹ <span id="pricepr{{product.9.id}}">{{product.9.price}} </span></p>
+                <span id="divpr{{9.id}}">
+                  <a id="pr{{product.9.id}}"  class="btn btn-primary cart">Add to Cart</a>
+                </span>
+                <a href="/tshirtitem10"><button class="btn btn-primary cart">View</button></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="shop-card col-lg-3">
+            <div class="card ">
+              <img src='/media/{{product.10.image}}' class="card-img-top" alt="Abhinav White T-shirt">
+              <div class="card-body">
+                <h5 class="card-title" id="namepr{{product.10.id}}">{{product.10.product_name}}</h5>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <h6 class="product-review">(2.9k reviews)</h6>
+                <p class="card-text">{{product.10.desc}}</p>
+                <p class="card-text product-price" >₹ <span id="pricepr{{product.10.id}}">{{product.10.price}} </span></p>
+                <span id="divpr{{10.id}}">
+                  <a id="pr{{product.10.id}}"  class="btn btn-primary cart">Add to Cart</a>
+                </span>
+                <a href="/item11"><button class="btn btn-primary cart">View</button></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="shop-card col-lg-3">
+            <div class="card ">
+              <img src='/media/{{product.11.image}}' class="card-img-top" alt="The Awesome Guy White T-shirt">
+              <div class="card-body">
+                <h5 class="card-title" id="namepr{{product.11.id}}">{{product.11.product_name}}</h5>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <h6 class="product-review">(2.1k reviews)</h6>
+                <p class="card-text">{{product.11.desc}}</p>
+                <p class="card-text product-price" >₹ <span id="pricepr{{product.11.id}}">{{product.11.price}} </span></p>
+                <span id="divpr{{11.id}}">
+                  <a id="pr{{product.11.id}}"  class="btn btn-primary cart">Add to Cart</a>
+                </span>
+                <a href="/item12"><button class="btn btn-primary cart">View</button></a>
+              </div>
+            </div>
+          </div>
+    </div>
+
+    <h2 class="shop-category">Handmade Home Decor</h2>
+    <div class="row">
+          <div class="shop-card col-lg-3">
+            <div class="card ">
+              <img src='/media/{{product.12.image}}' class="card-img-top" alt="shop handmade lantern">
+              <div class="card-body">
+                <h5 class="card-title" id="namepr{{product.12.id}}">{{product.12.product_name}}</h5>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <h6 class="product-review">(1.2k reviews)</h6>
+                <p class="card-text">{{product.12.desc}}</p>
+                <p class="card-text product-price" >₹ <span id="pricepr{{product.12.id}}">{{product.12.price}} </span></p>
+                <span id="divpr{{12.id}}">
+                  <a id="pr{{product.12.id}}" class="btn btn-primary cart">Add to Cart</a>
+                </sapn>
+                <a href="/lanternitem11"><button class="btn btn-primary cart">View</button></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="shop-card col-lg-3">
+            <div class="card ">
+              <img src='/media/{{product.13.image}}' class="card-img-top" alt="handmade photo frame">
+              <div class="card-body">
+                <h5 class="card-title" id="namepr{{product.13.id}}">{{product.13.product_name}}</h5>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <h6 class="product-review">(578 reviews)</h6>
+                <p class="card-text">{{product.13.desc}}</p>
+                <p class="card-text product-price" >₹ <span id="pricepr{{product.13.id}}">{{product.13.price}} </span></p>
+                <span id="divpr{{13.id}}">
+                  <a id="pr{{product.13.id}}"  class="btn btn-primary cart">Add to Cart</a>
+                </span>
+                <a href="/frameitem12"><button class="btn btn-primary cart">View</button></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="shop-card col-lg-3">
+            <div class="card ">
+              <img src='/media/{{product.14.image}}' class="card-img-top" alt="handmade wall hanging">
+              <div class="card-body">
+                <h5 class="card-title" id="namepr{{product.14.id}}">{{product.14.product_name}}</h5>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <h6 class="product-review">(1.5k reviews)</h6>
+                <p class="card-text">{{product.14.desc}}</p>
+                <p class="card-text product-price" >₹ <span id="pricepr{{product.14.id}}">{{product.14.price}} </span></p>
+                <span id="divpr{{14.id}}">
+                  <a id="pr{{product.14.id}}" class="btn btn-primary cart">Add to Cart</a>
+                </span>
+                <a href="/item15"><button class="btn btn-primary cart">View</button></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="shop-card col-lg-3">
+            <div class="card ">
+              <img src='/media/{{product.15.image}}' class="card-img-top" alt="handmade wall hanging">
+              <div class="card-body">
+                <h5 class="card-title" id="namepr{{product.15.id}}">{{product.15.product_name}}</h5>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <i class="far fa-star"></i>
+                <h6 class="product-review">(679 reviews)</h6>
+                <p class="card-text">{{product.15.desc}}</p>
+                <p class="card-text product-price" >₹ <span id="pricepr{{product.15.id}}">{{product.15.price}} </span></p>
+                <span id="divpr{{15.id}}">
+                  <a id="pr{{product.15.id}}" class="btn btn-primary cart">Add to Cart</a>
+                </span>
+                <a href="/item16"><button class="btn btn-primary cart">View</button></a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+  </div>
+
+    <!-- footer section -->
+
+    <footer id="footer">
+      <a href="https://twitter.com/SokhiAbhinavS23?t=gxnaYTug79lDYXTgr4Dpjw&s=09"><i class="fab fa-twitter footer-icon"></i></a>
+      <a href=""><i class="fab fa-facebook-f footer-icon"></i></a>
+      <a href="https://www.instagram.com/mr.singh_23/"><i class="fab fa-instagram footer-icon"></i></a>
+      <a href="https://www.youtube.com/channel/UC20IYjJgesMSqm8q2ct8dXg"><i class="fab fa-youtube footer-icon"></i></a>
+      <p class="footer-copyright">© Copyright 2021 Abhinav Creates Art</p>
+
+    </footer>
+  <!-- bootstrap javascript -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+
+  <script>
+    //find out the cart items from localstorage
+    if(localStorage.getItem('cart') == null){
+    var cart = {};
+    }
+    else
+    {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    }
+  
+    // If the add to cart button is clicked, add/increment the item
+    $('.cart').click(function(){
+    var idstr = this.id.toString();
+    console.log(idstr);
+    if (cart[idstr] != undefined) {
+      qty = cart[idstr][0] + 1;
+      
+    } else {
+      qty = 1;
+      name = document.getElementById('name'+idstr).innerHTML
+      price = document.getElementById('price'+idstr).innerHTML
+      cart[idstr] = [qty, name, parseInt(price)];  //removed ,name from [qty,name] because it was printing the name again after the qty
+
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    document.getElementById('cart').innerHTML = Object.keys(cart).length;
+    });
+  
+    
+    //Add Popover to cart
+    $('#popcart').popover();
+    updatePopover(cart);
+    function updatePopover(cart)
+    {
+      console.log('We are inside updatePopover');
+      var popStr = "";
+      popStr = popStr + "<h5> Cart for your items in my shopping cart </h5><div class='mx-2 my-2'>";
+      var i = 1;
+      for (var item in cart){
+          popStr = popStr + "<b>" + i + "</b>. ";
+          popStr = popStr + document.getElementById('name' + item).innerHTML.slice(0, 19) + "... Qty: " + cart[item] + '<br>';
+          i = i+1;
+      }
+      popStr = popStr + "</div>" 
+      console.log(popStr);
+      document.getElementById('popcart').setAttribute('data-content', popStr);
+      $('#popcart').popover();
+    }
+  
+      function clearCart() {
+      cart = JSON.parse(localStorage.getItem('cart'));
+      for (var item in cart) {
+          document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>'
+      }
+      localStorage.clear();
+      cart = {};
+      updateCart(cart);
+      updatePopover(cart);
+    } 
+  
+  </script>
+
+
+</body>
+
+</html>

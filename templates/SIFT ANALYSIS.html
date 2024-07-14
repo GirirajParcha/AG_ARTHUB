@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>SIFT Analysis</title>
+
+  <!-- font Awesome -->
+  <script src="https://kit.fontawesome.com/b7fd829945.js" crossorigin="anonymous"></script>
+
+  <!--bootstrap stylesheet-->
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        
+        <!--my stylesheet-->
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+  <!-- navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark nav-bar">
+    <div class="container-fluid">
+      <video class="logo" width="25%" autoplay muted>
+        <source src="Logo-video.mp4" type="video/mp4">
+      </video>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item home">
+            <a class="nav-link " aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item blog">
+            <a class="nav-link " href="/blogs">Blogs</a>
+          </li>
+          <li class="nav-item shop">
+            <a class="nav-link" href="/shop">Shop</a>
+          </li>
+          <li class="nav-item project">
+            <a class="nav-link active" href="/learn">SBS</a>
+          </li>
+          <li class="nav-item gallery">
+            <a class="nav-link " href="/gallery">Gallery</a>
+          </li>
+          <li class="nav-item Contact">
+            <a class="nav-link" href="HomePage.html #ContactMe">Contact</a>
+          </li>
+          <li class="nav-item insta">
+            <a class="nav-link" href="https://www.instagram.com/mr.singh_23/">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+          <li class="nav-item youtube">
+            <a class="nav-link" href="https://www.youtube.com/channel/UC20IYjJgesMSqm8q2ct8dXg">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+        </ul>
+        <!-- <form class="d-flex">
+               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+               <button class="btn btn-outline-success" type="submit">Search</button>
+             </form> -->
+      </div>
+    </div>
+  </nav>
+
+
+
+
+  <h1>SIFT Analysis</h1>
+  <!-- intro of technology -->
+  <p>
+    The scale-invariant feature transform (SIFT) is an algorithm used to detect and describe local features in digital images. It locates certain key points and then furnishes them with quantitative information (so-called descriptors) which can for
+    example be used for object recognition. The descriptors are supposed to be invariant against various transformations which might make images look different although they represent the same object(s). More about that below.
+  </p>
+  <img src="images of ACWS/Sunset.jpg" class="sunset-intro-img" alt="sunset painting image">
+
+  <h2>Step 1 of Analysis</h2>
+  <img src="sunset parts/sift step 1/sunset part 1.png" alt="image">
+  <p>
+    The algorithm first doubles the width and height of its input using bilinear_interpolation. That's the first picture above, the one in its own row.
+
+    This picture is subsequently blurred using a Gaussian convolution. That's indicated by the orange arrow.
+
+    What follows is a sequence of further convolutions with increasing standard deviation. Each picture further to the right is the result of convoluting its left neighbor, as indicated by the green arrow.
+
+    Finally, the antepenultimate picture of each row is downsampled - see the blue arrow. This starts another row of convolutions. We repeat this process until the pictures are too small to proceed. (By the way, each row is usually called an octave
+    since the sampling rate is decreased by a factor of two per stage.)
+
+    What we now have constructed is called a scale space. The point of doing this is to simulate different scales of observation (as you move further down in the table) and to suppress fine-scale structures (as you move to the right).
+
+    Note that the representation above has been normalized - see the gray chart at its bottom. This will be especially noticeable for low-contrast images. (An input with full contrast will have black at 0.00 and white at 1.00.)
+  </p>
+  <img src="sunset parts/sift step 1/sunset part 2.png" alt="">
+  <img src="sunset parts/sift step 1/sunset part 3.png" alt="">
+  <img src="sunset parts/sift step 1/sunset part 4.png" alt="">
+  <img src="sunset parts/sift step 1/sunset part 5.png" alt="">
+  <img src="sunset parts/sift step 1/sunset part 6.png" alt="">
+  <img src="sunset parts/sift step 1/sunset part 7.png" alt="">
+  <img src="sunset parts/sift step 1/sunset part 8.png" alt="">
+  <img src="sunset parts/sift step 1/sunset part 9.png" alt="">
+
+  <h2>Step 2 of Analysis</h2>
+  <p>
+    Now for the next step. Let's imagine for a moment that each octave of our scale space were a continuous space with three dimensions: the x and y coordinates of the pixels and the standard deviation of the convolution. In an ideal world, we would
+    now want to compute the Laplacian of the scale-space function which assigns gray values to each element of this space. The extrema of the Laplacian would then be candidates for the key points our algorithm is looking for. But as we have to work
+    in a discrete approximation of this continuous space, we'll instead use a technique called difference of Gaussians.
+
+    For each pair of horizontally adjacent pictures in the table above, I computed the differences of the individual pixels.
+  </p>
+  <img src="sunset parts/sift step 2/sunset part 1.png" alt="">
+  <p>
+    If you click on one of the pixels above, you will see below how the difference for this individual pixel was calculated. You'll see a clipping of the difference image in the middle while to the left and right you'll see the corresponding
+    clippings from the two scale space images which were subtracted. Note that bright spots in the difference image mean there was an increase in brightness while dark spots mean the opposite. Medium gray (see the marker in the gray chart above)
+    indicates that there was no change.
+
+    (All the differences are usually comparatively small, by the way. If the difference images hadn't been normalized, we'd see mostly or only medium gray.)
+  </p>
+  <img src="sunset parts/sift step 2/sunset part 2.png" alt="image">
+  <img src="sunset parts/sift step 2/sunset part 3.png" alt="image">
+  <img src="sunset parts/sift step 2/sunset part 4.png" alt="image">
+  <img src="sunset parts/sift step 2/sunset part 5.png" alt="image">
+  <img src="sunset parts/sift step 2/sunset part 6.png" alt="image">
+  <img src="sunset parts/sift step 2/sunset part 7.png" alt="image">
+  <img src="sunset parts/sift step 2/sunset part 8.png" alt="image">
+  <img src="sunset parts/sift step 2/sunset part 9.png" alt="image">
+
+  <h2>Step 3 of Analysis</h2>
+  <p>
+    The discrete extrema of these difference images will now be good approximations for the actual extrema we talked about above. A discrete maximum in our case is a pixel whose gray value is larger than those of all of its 26 neighbor pixels; and a
+    discrete minimum is of course defined in an analogous way. Here we count as "neighbors" the eight adjacent pixels in the same picture, the corresponding two pixels in the adjacent pictures in the same octave, and finally their neighbors in the
+    same picture.
+
+    The extrema we've found are marked below. (Some are marked with yellow circles. These are indeed extrema, but their absolute values are so small that we'll discard them before proceeding. The algorithm assumes that it's likely these extrema exist
+    only due to image noise.)
+  </p>
+  <img src="sunset parts/sift step 3/sunset part1.png" alt="image">
+  <img src="sunset parts/sift step 3/sunset part 2.png" alt="image">
+  <img src="sunset parts/sift step 3/sunset part 3.png" alt="image">
+  <img src="sunset parts/sift step 3/sunset part 4.png" alt="image">
+  <img src="sunset parts/sift step 3/sunset part 5.png" alt="image">
+  <img src="sunset parts/sift step 3/sunset part 6.png" alt="image">
+  <img src="sunset parts/sift step 3/sunset part 7.png" alt="image">
+  <img src="sunset parts/sift step 3/sunset part 8.png" alt="image">
+  <img src="sunset parts/sift step 3/sunset part 9.png" alt="image">
+  <h4>If you will click on any point then you'll see 26 neighbor points as follows:</h4>
+  <img src="sunset parts/sift step 1/step 3 point example.png" alt="example image">
+
+  <h2>Step 4 of Analysis</h2>
+  <p>
+    The extrema we've found so far will of course have discrete coordinates. We now try to refine these coordinates. This is done (for each extremum) by approximating the quadratic Taylor expansion of the scale-space function and computing its
+    extrema. (The gradient and the Hessian are approximated using finite differences.) This is an iterative process and either we are able to refine the location or we give up after a couple of steps and discard the point.
+
+    Now that we have better ("continuous") coordinates, we also do a bit more. We try to identify (and discard) key point candidates which lie on edges. These aren't good key points as they are invariant to translations parallel to the edge
+    direction. Edge extrema are found by comparing the principal curvatures of the scale-space function (or rather its projection onto the picture plane) at the corresponding locations. (This is done with the help of the trace and the determinant of
+    the Hessian, but we won't discuss the details here.)
+
+    The remaining key points are shown below. (As we now have better estimates regarding their position, we can also discard some more low-contrast points. These are again marked with yellow color.)
+  </p>
+  <img src="sunset parts/sift step 4/sunset part 1.png" alt="image">
+  <img src="sunset parts/sift step 4/sunset part 2.png" alt="image">
+  <img src="sunset parts/sift step 4/sunset part 3.png" alt="image">
+  <img src="sunset parts/sift step 4/sunset part 4.png" alt="image">
+  <img src="sunset parts/sift step 4/sunset part 5.png" alt="image">
+  <img src="sunset parts/sift step 4/sunset part 6.png" alt="image">
+  <img src="sunset parts/sift step 4/sunset part 7.png" alt="image">
+  <img src="sunset parts/sift step 4/sunset part 8.png" alt="image">
+  <img src="sunset parts/sift step 4/sunset part 9.png" alt="image">
+    <h4>If you'll click any of the point then you'll see the following graph which shows how their scale-space coordinates have been refined.</h4>
+    <img src="sunset parts/sift step 1/step 4 point example.png" alt="example image">
+
+  <h2>Step 5 of Analysis</h2>
+  <p>
+    You might have the impression that there are some "new" points which weren't among the extrema further above. But these will be points which moved from one scale picture to another one. (For example, if a point was originally in the middle, i.e.
+    if its scale value had been 2, the refined value could now be 2.57. That would mean it'd now appear on the right as the nearest integer would now be 3.)
+
+    The algorithm now assigns to each remaining key point its reference orientation, if possible. Very roughly, we observe all gradients in the direct neighborhood of such a point and see if many of them have approximately the same direction.
+
+    (The technical details are as follows: For each pixel in a square-shaped patch around the key point, we approximate the gradient using finite differences. Recall that the gradient points in the direction of the greatest increase and its magnitude
+    is the slope in that direction. The intervall from 0 to 360 degrees is divided into a fixed number of bins (36 by default) and the value of the bin the gradient's direction belongs to is incremented by the gradient's magnitude after it has been
+    multiplied with a Gaussian weight. The latter is done to reduce the contribution of more distant pixels. The resulting histogram, i.e. the list of bins, is then smoothed by repeated box blurs. Finally, extrema of this histogram are identified and
+    selected if their value exceeds a certain threshold. A better approximation for the reference orientation is then computed as the maximum of the quadratic interpolation of the histogram extremum and the values in its two neighboring bins.)
+
+    Key points near the image border which don't have enough neighboring pixels to compute a reference orientation are discarded. Key points without a dominating orientation are also discarded. On the other hand, key points with more than one
+    dominating orientation might appear more than once in the next steps, namely once per orientation.
+  </p>
+  <img src="sunset parts/sift step 5/sunset part 1.png" alt="image">
+  <img src="sunset parts/sift step 5/sunset part 2.png" alt="image">
+  <img src="sunset parts/sift step 5/sunset part 3.png" alt="image">
+  <img src="sunset parts/sift step 5/sunset part 4.png" alt="image">
+  <img src="sunset parts/sift step 5/sunset part 5.png" alt="image">
+  <img src="sunset parts/sift step 5/sunset part 6.png" alt="image">
+  <img src="sunset parts/sift step 5/sunset part 7.png" alt="image">
+  <img src="sunset parts/sift step 5/sunset part 8.png" alt="image">
+  <img src="sunset parts/sift step 5/sunset part 9.png" alt="image">
+  <h4>If you click on one of the key points above, you will see below to the left the part of its neighborhood that was investigated and the reference orientation that was computed. To the right, you will see the (smoothed and normalized) histogram from which this orientation was derived.</h4>
+  <img src="sunset parts/sift step 1/step 5 example image 1.png" alt="example image">
+  <img src="sunset parts/sift step 1/step 5 example image 2.png" alt="example image">
+  <h2>Step 6 of Analysis</h2>
+  <p>
+    We now have our final set of key points (well, almost) and will, as the last step, compute the descriptors for each of them.
+
+    This step is pretty similar to the one above. We will again compute a histogram for the distribution of the directions of the gradients in a neighborhood of each key point. The difference is that this time the neighborhood is a circle and the
+    coordinate system is rotated to match the reference orientation. Also, the full truth is that we not only compute one, but rather sixteen histograms. Each histogram corresponds to a point near the center of the new coordinate system and the
+    contribution of each gradient from within the circle-shaped neighborhood is distributed over these histograms according to proximity.
+
+    (Also, as a minor technical detail, some key points might be discarded at this last step if their circle wouldn't fit into the image.)
+  </p>
+  <img src="sunset parts/sift step 6/sunset part 1.png" alt="image">
+  <img src="sunset parts/sift step 6/sunset part 2.png" alt="image">
+  <img src="sunset parts/sift step 6/sunset part 3.png" alt="image">
+  <img src="sunset parts/sift step 6/sunset part 4.png" alt="image">
+  <img src="sunset parts/sift step 6/sunset part 5.png" alt="image">
+  <img src="sunset parts/sift step 6/sunset part 6.png" alt="image">
+  <img src="sunset parts/sift step 6/sunset part 7.png" alt="image">
+  <img src="sunset parts/sift step 6/sunset part 8.png" alt="image">
+  <img src="sunset parts/sift step 6/sunset part 9.png" alt="image">
+  <h4>If you click on the key points above to see the neighborhood and the coordinate system used for the descriptor generation below.
+    You will also see a rendering of the actual descriptor, i.e. of the histograms (which are normalized and represented internally as 4×4×8=128 8-bit integers).
+    (Like above, one should actually imagine the histograms to be rendered as pie charts because we're talking about angles here.)</h4>
+  <img src="sunset parts/sift step 1/step 6 example image 1.png" alt="example image">
+  <img src="sunset parts/sift step 1/step 6 example image 2.png" alt="example image">
+
+
+  <h2>Summary</h2>
+  <p>
+    So, what do we have now? We have a potentially large set of descriptors. Practical experience has shown that these descriptors can often be used to identify objects in images even if they are depicted with different illumination, from a different
+    perspective, or in a different size compared to a reference image. Why does this work? Here are some reasons:
+
+    Key points are extracted at different scales and blur levels and all subsequent computations are performed within the scale space framework. This will make the descriptors invariant to image scaling and small changes in perspective.
+    Computation relative to a reference orientation is supposed to make the descriptors robust against rotation.
+    Likewise, the descriptor information is stored relative to the key point position and thus invariant against translations.
+    Many potential key points are discarded if they are deemed unstable or hard to locate precisely. The remaining key points should thus be relatively immune to image noise.
+    The histograms are normalized at the end which means the descriptors will not store the magnitudes of the gradients, only their relations to each other. This should make the descriptors invariant against global, uniform illumination changes.
+    The histogram values are also thresholded to reduce the influence of large gradients. This will make the information partly immune to local, non-uniform changes in illumination.
+
+    The algorithm used here is based on Anatomy of the SIFT Method by Ives Rey-Otero and Mauricio Delbracio.
+
+
+  </p>
+
+  <h1>User's Painting</h1>
+<img class="sunset-intro-img" src="sunset parts/Users Painting/Users Painting.jpg" alt="user's painting">
+<h1>Now we'll perform all the same steps on the User's Painting.</h1>
+<h1>Step 1</h1>
+<img src="sunset parts/Users Painting/USIFT step 1/Usunset part 1.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 1/Usunset part 2.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 1/Usunset part 3.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 1/Usunset part 4.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 1/Usunset part 5.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 1/Usunset part 6.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 1/Usunset part 7.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 1/Usunset part 8.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 1/Usunset part 9.png" alt="image">
+
+<h1>Step 2</h1>
+<img src="sunset parts/Users Painting/USIFT step 2/Usunset part 1.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 2/Usunset part 2.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 2/Usunset part 3.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 2/Usunset part 4.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 2/Usunset part 5.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 2/Usunset part 6.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 2/Usunset part 7.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 2/Usunset part 8.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 2/Usunset part 9.png" alt="image">
+
+<h1>Step 3</h1>
+<img src="sunset parts/Users Painting/USIFT step 3/Usunset part 1.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 3/Usunset part 2.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 3/Usunset part 3.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 3/Usunset part 4.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 3/Usunset part 5.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 3/Usunset part 6.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 3/Usunset part 7.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 3/Usunset part 8.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 3/Usunset part 9.png" alt="image">
+
+<h1>Step 4</h1>
+<img src="sunset parts/Users Painting/USIFT step 4/Usunset part 1.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 4/Usunset part 2.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 4/Usunset part 3.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 4/Usunset part 4.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 4/Usunset part 5.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 4/Usunset part 6.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 4/Usunset part 7.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 4/Usunset part 8.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 4/Usunset part 9.png" alt="image">
+
+<h1>step 5</h1>
+<img src="sunset parts/Users Painting/USIFT step 5/Usunset part 1.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 5/Usunset part 2.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 5/Usunset part 3.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 5/Usunset part 4.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 5/Usunset part 5.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 5/Usunset part 6.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 5/Usunset part 7.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 5/Usunset part 8.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 5/Usunset part 9.png" alt="image">
+
+<h1>Step 6</h1>
+<img src="sunset parts/Users Painting/USIFT step 6/Usunset part 1.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 6/Usunset part 2.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 6/Usunset part 3.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 6/Usunset part 4.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 6/Usunset part 5.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 6/Usunset part 6.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 6/Usunset part 7.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 6/Usunset part 8.png" alt="image">
+<img src="sunset parts/Users Painting/USIFT step 6/Usunset part 9.png" alt="image">
+
+<h1>Matching the Features</h1>
+<img src="sunset parts/Users Painting/Final Matching Result.png" alt="">
+<h1>Results</h1>
+
+    <!-- footer section -->
+
+    <footer id="footer">
+      <a href="https://twitter.com/SokhiAbhinavS23?t=gxnaYTug79lDYXTgr4Dpjw&s=09"><i class="fab fa-twitter footer-icon"></i></a>
+      <a href=""><i class="fab fa-facebook-f footer-icon"></i></a>
+      <a href="https://www.instagram.com/mr.singh_23/"><i class="fab fa-instagram footer-icon"></i></a>
+      <a href="https://www.youtube.com/channel/UC20IYjJgesMSqm8q2ct8dXg"><i class="fab fa-youtube footer-icon"></i></a>
+      <p class="footer-copyright">© Copyright 2021 Abhinav Creates Art</p>
+
+    </footer>
+    <!-- bootstrap javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>

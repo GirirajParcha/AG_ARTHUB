@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Watercolor and Guoache: What's the Difference?</title>
+
+   <!-- google fonts -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet">
+
+
+   <!-- font Awesome -->
+   <script src="https://kit.fontawesome.com/b7fd829945.js" crossorigin="anonymous"></script>
+
+
+   <!--bootstrap stylesheet-->
+   <!-- CSS only -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+   
+   <!--my stylesheet-->
+   {% load static %}
+   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+  <!-- navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark nav-bar">
+    <div class="container-fluid">
+      <video class="logo" width="25%" autoplay muted>
+        <source src="{% static 'Logo-video.mp4' %}" type="video/mp4">
+      </video>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item home">
+            <a class="nav-link " aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item blog">
+            <a class="nav-link active" href="/blogs">Blogs</a>
+          </li>
+          <li class="nav-item shop">
+            <a class="nav-link" href="/shop">Shop</a>
+          </li>
+          <li class="nav-item project">
+            <a class="nav-link" href="/learn">SBS</a>
+          </li>
+          <li class="nav-item gallery">
+            <a class="nav-link" href="/gallery">Gallery</a>
+          </li>
+          <li class="nav-item Contact">
+            <a class="nav-link" href="HomePage.html #ContactMe">Contact</a>
+          </li>
+          <li class="nav-item insta">
+            <a class="nav-link" href="https://www.instagram.com/mr.singh_23/">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </li>
+          <li class="nav-item youtube">
+            <a class="nav-link" href="https://www.youtube.com/channel/UC20IYjJgesMSqm8q2ct8dXg">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </li>
+        </ul>
+        <!-- <form class="d-flex">
+               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+               <button class="btn btn-outline-success" type="submit">Search</button>
+             </form> -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- blog section -->
+  <div class="full-blog">
+
+    <div class="title-section-of-blog">
+      <p>DEC 2, 2021</p>
+      <h1>Watercolor and Gouache: What’s the Difference?</h1>
+      <p>-Abhinav Singh <a href="https://www.instagram.com/mr.singh_23/"><i class="fab fa-instagram footer-icon"></i></a></p>
+    </div>
+    <div class="body-of-blog">
+      <p>
+        Upon first inspection, watercolor and gouache (pronounced “gwash”) may appear to be nearly identical mediums.
+        However, when given more attention, one can see that both paints have individual characteristics that make them easy to distinguish.
+        A primary difference between the two paints is that gouache is more opaque than watercolor.
+        When a layer of watercolor is applied, the white paper and any preliminary drawings underneath will show through, whereas when a layer of gouache is applied, the paper will not show through nearly as much. Due to the transparency of
+        watercolor, the light is able to travel through the pigment and reflect off of the white paper, giving it a luminous quality that differs from gouache’s matte finish.
+      </p>
+      <img src="{% static 'imagesagah/WCvsGSHE-img.webp' %}" alt="watercolor vs guoache image">
+      <p>
+        Despite these differing properties, watercolor and gouache are nearly identical in makeup.
+        Both paints consist of pigment and water soluble binder, which allows the paint to be altered even after it dries with the addition of water.
+        The opacity of gouache comes from the white pigment or chalk that is added along with the colored pigment and binder in order to make it less transparent.
+      </p>
+      <img src="{% static 'imagesagah/WCvsGSHE-img1.jpg' %}" alt="watercolor vs guoache image">
+      <p>
+        Aspects of technique and purpose of both of these materials can also be compared to find meaningful distinctions. For example, gouache is known to be the medium of choice for many illustrators, while watercolor is more commonly used by other
+        types of artists. This is due to the fact that gouache dries very quickly, allows the painter to easily create large solid blocks of color, and can be used to depict minute details; all traits that are very important to illustrators.
+        Watercolor, on the other hand, is not as controllable and dries much slower.
+        For example, in the piece
+        Venice Watercolor
+        by Billy Al Bengston, which is currently on display in Argyros Forum, the fluidity and unruly nature of watercolor is visible.
+        Overall, watercolor and gouache have a number of similarities and differences in appearance, makeup, and purpose that are easy to identify once you are aware of them.
+      </p>
+      <img src="{% static 'imagesagah/WCvsGSHE-img2.jpg' %}" alt="watercolor vs guoache image">
+    </div>
+
+  </div>
+
+
+    <!-- footer section -->
+
+    <footer id="footer">
+      <a href="https://twitter.com/SokhiAbhinavS23?t=gxnaYTug79lDYXTgr4Dpjw&s=09"><i class="fab fa-twitter footer-icon"></i></a>
+      <a href=""><i class="fab fa-facebook-f footer-icon"></i></a>
+      <a href="https://www.instagram.com/mr.singh_23/"><i class="fab fa-instagram footer-icon"></i></a>
+      <a href="https://www.youtube.com/channel/UC20IYjJgesMSqm8q2ct8dXg"><i class="fab fa-youtube footer-icon"></i></a>
+      <p class="footer-copyright">© Copyright 2021 Abhinav Creates Art</p>
+
+    </footer>
+    <!-- bootstrap javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>
